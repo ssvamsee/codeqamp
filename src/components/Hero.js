@@ -83,7 +83,7 @@ const Hero = () => {
                 spy={true}
                 smooth={true}
                 duration={800}
-                className="bg-primary text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-opacity-90 transition-all inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-primary text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-opacity-90 transition-all inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
               >
                 Enroll Now
               </Link>
@@ -93,7 +93,7 @@ const Hero = () => {
                 spy={true}
                 smooth={true}
                 duration={800}
-                className="bg-white border-2 border-primary text-primary px-6 py-3 rounded-md text-lg font-medium hover:bg-primary hover:text-white transition-all inline-block"
+                className="bg-white border-2 border-primary text-primary px-6 py-3 rounded-md text-lg font-medium hover:bg-primary hover:text-white transition-all inline-block cursor-pointer"
               >
                 Explore Courses
               </Link>

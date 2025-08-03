@@ -16,7 +16,6 @@ import SocialSidebar from './components/SocialSidebar';
 function HomePage() {
   return (
     <>
-      <Navbar />
       <Hero />
       <About />
       <Courses />
@@ -32,6 +31,7 @@ function App() {
     <Router>
       <div className="App">
         <SocialSidebar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/enroll" element={<Enroll />} />

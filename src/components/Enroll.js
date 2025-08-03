@@ -45,8 +45,24 @@ const Enroll = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary py-16 flex items-center">
+    <div className="min-h-screen bg-secondary pt-24 pb-16 flex items-center">
       <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-500 to-orange-500">
+              Enrollment Form
+            </span>
+          </h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Complete the form below to start your journey with CodeQamp and take the first step toward your career in medical coding.
+          </p>
+        </motion.div>
+        
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
             <div className="md:w-1/2 bg-primary p-8 text-white">

@@ -130,7 +130,7 @@ const Testimonials = () => {
         
         {/* Controls and additional info */}
         <div className="mt-12 text-center">
-          <p className="text-gray-500 italic">Hover over testimonials to pause scrolling</p>
+          {/* <p className="text-gray-500 italic">Hover over testimonials to pause scrolling</p> */}
           <div className="flex justify-center mt-6">
             <a href="#contact" className="inline-flex items-center bg-primary text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition-colors">
               Start Your Journey

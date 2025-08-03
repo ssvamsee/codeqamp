@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,33 +30,62 @@ const Navbar = () => {
     { name: 'Contact', to: 'contact' }
   ];
 
+  // Render menu links based on current page
+  const renderMenuLink = (item) => {
+    if (isHomePage) {
+      return (
+        <ScrollLink
+          key={item.name}
+          to={item.to}
+          spy={true}
+          smooth={true}
+          duration={500}
+          className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+        >
+          {item.name}
+        </ScrollLink>
+      );
+    } else {
+      return (
+        <RouterLink
+          key={item.name}
+          to={`/#${item.to}`}
+          className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+        >
+          {item.name}
+        </RouterLink>
+      );
+    }
+  };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Logo />
+          <RouterLink to="/">
+            <Logo />
+          </RouterLink>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
-          {menuItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.to}
-              spy={true}
-              smooth={true}
-              duration={500}
-              className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+          {menuItems.map((item) => renderMenuLink(item))}
+          
+          {isHomePage ? (
+            <RouterLink 
+              to="/enroll" 
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all"
             >
-              {item.name}
-            </Link>
-          ))}
-          <a 
-            href="/enroll" 
-            className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all"
-          >
-            Enroll Now
-          </a>
+              Enroll Now
+            </RouterLink>
+          ) : (
+            <RouterLink 
+              to="/" 
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all"
+            >
+              Back to Home
+            </RouterLink>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,24 +112,47 @@ const Navbar = () => {
         <div className="md:hidden bg-white shadow-md">
           <div className="container mx-auto px-4 py-4">
             {menuItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.to}
-                spy={true}
-                smooth={true}
-                duration={500}
-                className="block py-2 text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+              isHomePage ? (
+                <ScrollLink
+                  key={item.name}
+                  to={item.to}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  className="block py-2 text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </ScrollLink>
+              ) : (
+                <RouterLink
+                  key={item.name}
+                  to={`/#${item.to}`}
+                  className="block py-2 text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </RouterLink>
+              )
+            ))}
+            
+            {isHomePage ? (
+              <RouterLink 
+                to="/enroll" 
+                className="block py-2 mt-2 text-center bg-primary text-white px-4 rounded-md hover:bg-opacity-90 transition-all"
                 onClick={() => setIsOpen(false)}
               >
-                {item.name}
-              </Link>
-            ))}
-            <a 
-              href="/enroll" 
-              className="block py-2 mt-2 text-center bg-primary text-white px-4 rounded-md hover:bg-opacity-90 transition-all"
-            >
-              Enroll Now
-            </a>
+                Enroll Now
+              </RouterLink>
+            ) : (
+              <RouterLink 
+                to="/" 
+                className="block py-2 mt-2 text-center bg-primary text-white px-4 rounded-md hover:bg-opacity-90 transition-all"
+                onClick={() => setIsOpen(false)}
+              >
+                Back to Home
+              </RouterLink>
+            )}
           </div>
         </div>
       )}
