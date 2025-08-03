@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import BrandName from './BrandName';
 
 const Logo = () => {
   return (
@@ -11,18 +12,15 @@ const Logo = () => {
       whileHover={{ scale: 1.05 }}
     >
       <img 
-        src="/CQ-fevicon.png" 
+        src="/CodeQamp-removebg-preview.png" 
         alt="CodeQamp Logo" 
         className="h-10 md:h-10" 
       />
       
       <div className="ml-2 relative">
         <h1 className="font-extrabold text-xl md:text-2xl tracking-wider">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-500 to-orange-500">
-            Institute
-          </span>
+          <BrandName />
         </h1>
-        {/* <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-700 to-orange-500"></div> */}
       </div>
     </motion.div>
   );

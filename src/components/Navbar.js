@@ -40,7 +40,7 @@ const Navbar = () => {
           spy={true}
           smooth={true}
           duration={500}
-          className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+          className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors py-2 flex items-center"
         >
           {item.name}
         </ScrollLink>
@@ -50,7 +50,7 @@ const Navbar = () => {
         <RouterLink
           key={item.name}
           to={`/#${item.to}`}
-          className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors"
+          className="text-gray-700 hover:text-primary cursor-pointer font-medium transition-colors py-2 flex items-center"
         >
           {item.name}
         </RouterLink>
@@ -68,20 +68,20 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {menuItems.map((item) => renderMenuLink(item))}
           
           {isHomePage ? (
             <RouterLink 
               to="/enroll" 
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all"
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all flex items-center"
             >
               Enroll Now
             </RouterLink>
           ) : (
             <RouterLink 
               to="/" 
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all"
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all flex items-center"
             >
               Back to Home
             </RouterLink>

@@ -6,8 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#3F88C5',    // Soft blue
+        primary: '#282d76',    // Updated blue color
         secondary: '#FDF6EC',  // Warm beige
+        brand: {
+          orange: '#f95c2b',   // Orange for "Qamp" part
+        }
       },
     },
   },
